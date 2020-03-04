@@ -32,14 +32,12 @@ export class App extends Component {
   }
 }
 
-export const mapStateToProps = ({ urls }) => ({
-  urls
+export const mapStateToProps = state => ({
+  urls: state.urls
 });
 
-export const mapDispatchToProps = dispatch => {
-  return {
-    setUrls: urls => dispatch(setUrls(urls))
-  }
-};
+export const mapDispatchToProps = dispatch => ({
+  setUrls: urls => dispatch(setUrls(urls))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

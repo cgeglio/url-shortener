@@ -1,3 +1,9 @@
-export const setUrls = () => ({
-  type: 'SET_URLS'
+export const setUrls = (urls) => ({
+  type: 'SET_URLS',
+  urls
+});
+
+export const addUrl = (url) => ({
+  type: 'ADD_URL',
+  url
 });
