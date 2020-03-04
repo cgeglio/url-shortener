@@ -1,6 +1,6 @@
 import { UrlContainer, mapStateToProps, mapDispatchToProps } from './UrlContainer';
 import React from 'react';
-import { setUrls } from '../../actions';
+import { setUrls, deleteUrl } from '../../actions';
 import { shallow } from 'enzyme';
 
 describe('UrlContainer', () => {
@@ -47,6 +47,21 @@ describe('mapDispatchToProps', () => {
     const mappedProps = mapDispatchToProps(mockDispatch);
 
     mappedProps.setUrls(mockUrls);
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+  })
+
+  it('should call dispatch with the deleteUrl action when deleteUrl is called', () => {
+    const mockUrl = {
+      id: 1,
+      long_url: "https://images.unsplash.com/photo...",
+      short_url: "http://localhost:3001/useshorturl/2",
+      title: 'Awesome photo'
+    };
+    const mockDispatch = jest.fn();
+    const actionToDispatch = deleteUrl(mockUrl);
+    const mappedProps = mapDispatchToProps(mockDispatch);
+
+    mappedProps.deleteUrl(mockUrl);
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
   })
 });
