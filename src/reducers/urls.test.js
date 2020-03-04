@@ -61,4 +61,37 @@ describe('urls', () => {
     const result = urls(mockState, mockAction);
     expect(result).toEqual(expected)
   })
+
+  it('should return the correct state if the action type is DELETE_URL', () => {
+    const mockUrl = {
+      id: 1,
+      long_url: "https://images.unsplash.com/photo...",
+      short_url: "http://localhost:3001/useshorturl/2",
+      title: 'Awesome photo'
+    };
+    const mockState = [{
+      id: 5,
+      long_url: "https://google.com/photo...",
+      short_url: "http://localhost:3001/useshorturl/5",
+      title: 'Coolest photo'
+    },
+    {
+      id: 1,
+      long_url: "https://images.unsplash.com/photo...",
+      short_url: "http://localhost:3001/useshorturl/2",
+      title: 'Awesome photo'
+    }];
+    const expected = [{
+      id: 5,
+      long_url: "https://google.com/photo...",
+      short_url: "http://localhost:3001/useshorturl/5",
+      title: 'Coolest photo'
+    }];
+    const mockAction = {
+      type: 'DELETE_URL',
+      url: mockUrl,
+    }
+    const result = urls(mockState, mockAction);
+    expect(result).toEqual(expected)
+  })
 })

@@ -31,4 +31,19 @@ describe('actions', () => {
     const result = actions.addUrl(url)
     expect(result).toEqual(expectedAction)
   })
+
+  it('should have a type DELETE_URL', () => {
+    const url = {
+      id: 1,
+      long_url: "https://images.unsplash.com/photo...",
+      short_url: "http://localhost:3001/useshorturl/2",
+      title: 'Awesome photo'
+    }
+    const expectedAction = {
+      type: 'DELETE_URL',
+      url
+    }
+    const result = actions.deleteUrl(url)
+    expect(result).toEqual(expectedAction)
+  })
 })
