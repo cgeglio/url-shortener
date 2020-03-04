@@ -23,7 +23,7 @@ export class UrlContainer extends Component {
       !this.props.urls.length ? <p>No urls yet! Find some to shorten!</p> :
       <section>
         {this.props.urls.map(url =>
-          <div className="url">
+          <div className="url" key={url.id}>
             <h3>{url.title}</h3>
             <a href={url.short_url} target="blank">{url.short_url}</a>
             <p>{url.long_url}</p>
