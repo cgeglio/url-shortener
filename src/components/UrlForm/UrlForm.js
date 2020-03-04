@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { addUrl } from '../../actions';
+import { getShortUrl } from '../../apiCalls'
 import { connect } from 'react-redux';
 
 class UrlForm extends Component {
@@ -18,8 +19,14 @@ class UrlForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addNewUrl({title: this.state.title, long_url: this.state.urlToShorten})
+    this.createShortUrl({title: this.state.title, long_url: this.state.urlToShorten})
     this.clearInputs();
+  }
+
+  createShortUrl = (urlInfo) => {
+    getShortUrl(urlInfo)
+      .then(url => this.props.addNewUrl(url))
+      .catch(error => console.log('Error posting url'))
   }
 
   clearInputs = () => {
