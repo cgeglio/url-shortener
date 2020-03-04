@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import UrlContainer from '../../components/UrlContainer/UrlContainer';
+import UrlContainer from '../../containers/UrlContainer/UrlContainer';
 import UrlForm from '../../components/UrlForm/UrlForm';
 
 export const App = () => {
