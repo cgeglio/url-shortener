@@ -5,6 +5,9 @@ export const urls = (state = [], action) => {
     case 'ADD_URL':
       let allUrls = [...state, action.url]
       return allUrls
+    case 'DELETE_URL':
+      let remainingUrls = state.filter(url => url.id !== action.url.id)
+      return remainingUrls
     default:
       return state;
   }
